@@ -1,0 +1,305 @@
+{
+  "$meta": {
+    "name": "EV Gate CPMS",
+    "version": "1.0.0",
+    "description": "Design tokens for the EV Gate multi-tenant CPMS. Light theme only."
+  },
+  "color": {
+    "brand": {
+      "50": "#f7f4fa",
+      "100": "#ece5f3",
+      "200": "#d9cbe7",
+      "300": "#bda6d4",
+      "400": "#9878bb",
+      "500": "#77539f",
+      "600": "#5c3a83",
+      "700": "#472a6b",
+      "800": "#3b185f",
+      "900": "#2a0944",
+      "950": "#1a0529"
+    },
+    "accent": {
+      "50": "#fefaf0",
+      "100": "#fdf2d8",
+      "200": "#fce3ab",
+      "300": "#fad07b",
+      "400": "#f9bf58",
+      "500": "#f2a626",
+      "600": "#dc8710",
+      "700": "#b66610",
+      "800": "#925115",
+      "900": "#784315"
+    },
+    "plum": {
+      "50": "#fdf3f8",
+      "100": "#fbe8f2",
+      "200": "#f8d0e5",
+      "300": "#f2a9cd",
+      "400": "#e874ac",
+      "500": "#d9498c",
+      "600": "#c02a6e",
+      "700": "#a32469",
+      "800": "#861f56",
+      "900": "#701e49"
+    },
+    "ink": {
+      "50": "#f8f9fb",
+      "100": "#f1f3f7",
+      "200": "#e5e8ef",
+      "300": "#d2d7e2",
+      "400": "#a0a7bb",
+      "500": "#737c94",
+      "600": "#555d74",
+      "700": "#3f465b",
+      "800": "#2b3145",
+      "900": "#191e2e"
+    },
+    "success": {
+      "50": "#ecfdf3",
+      "100": "#d1fadf",
+      "500": "#12a150",
+      "700": "#047a45"
+    },
+    "warning": {
+      "50": "#fffaeb",
+      "100": "#fef0c7",
+      "500": "#f79009",
+      "700": "#b54708"
+    },
+    "danger": {
+      "50": "#fef3f2",
+      "100": "#fee4e2",
+      "500": "#e0342c",
+      "700": "#b42318"
+    },
+    "info": {
+      "50": "#eff6ff",
+      "100": "#dbeafe",
+      "500": "#2563eb",
+      "700": "#1d4ed8"
+    },
+    "status": {
+      "available": "#12a150",
+      "preparing": "#0ea5e9",
+      "charging": "#2563eb",
+      "suspended": "#f59e0b",
+      "finishing": "#6366f1",
+      "reserved": "#f2a626",
+      "faulted": "#dc2626",
+      "unavailable": "#64748b",
+      "offline": "#94a3b8"
+    },
+    "surface": {
+      "page": "#f8f9fb",
+      "panel": "#ffffff",
+      "sunken": "#f1f3f7"
+    },
+    "border": {
+      "default": "#e5e8ef",
+      "strong": "#d2d7e2",
+      "focus": "#77539f"
+    },
+    "text": {
+      "primary": "#191e2e",
+      "body": "#2b3145",
+      "muted": "#737c94",
+      "subtle": "#a0a7bb",
+      "inverse": "#ffffff"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans": "'Avenir LT Std', 'Avenir Next', 'Avenir', 'Nunito Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+      "arabic": "'HONOR Sans Arabic', 'IBM Plex Sans Arabic', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif",
+      "mono": "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+    },
+    "styles": [
+      {
+        "name": "Page title",
+        "className": "text-[20px] font-semibold tracking-[-0.015em] text-ink-900",
+        "size": "20px",
+        "weight": 600,
+        "lineHeight": "1.2",
+        "tracking": "-0.015em",
+        "usage": "PageHeader h1 — one per screen"
+      },
+      {
+        "name": "Dialog title",
+        "className": "text-[15px] font-semibold text-ink-900",
+        "size": "15px",
+        "weight": 600,
+        "lineHeight": "1.4",
+        "usage": "Modal / Drawer header"
+      },
+      {
+        "name": "Section title",
+        "className": "text-[14px] font-semibold text-ink-900",
+        "size": "14px",
+        "weight": 600,
+        "lineHeight": "1.25",
+        "usage": "PanelHeader, EmptyState title"
+      },
+      {
+        "name": "Metric",
+        "className": "tnum text-[24px] font-semibold tracking-tight text-ink-900",
+        "size": "24px",
+        "weight": 600,
+        "lineHeight": "1",
+        "tracking": "-0.02em",
+        "usage": "KPI value in StatTile — tabular numerals"
+      },
+      {
+        "name": "Body",
+        "className": "text-[13px] text-ink-700",
+        "size": "13px",
+        "weight": 400,
+        "lineHeight": "1.5",
+        "usage": "Default control / table / paragraph text"
+      },
+      {
+        "name": "Body strong",
+        "className": "text-[13px] font-medium text-ink-900",
+        "size": "13px",
+        "weight": 500,
+        "lineHeight": "1.5",
+        "usage": "Primary cell in a table row, switch label"
+      },
+      {
+        "name": "Label",
+        "className": "text-[12.5px] font-medium text-ink-700",
+        "size": "12.5px",
+        "weight": 500,
+        "lineHeight": "1.4",
+        "usage": "Form field label, StatTile label"
+      },
+      {
+        "name": "Caption",
+        "className": "text-[12px] text-ink-500",
+        "size": "12px",
+        "weight": 400,
+        "lineHeight": "1.45",
+        "usage": "Hints, secondary meta, breadcrumbs"
+      },
+      {
+        "name": "Overline",
+        "className": "text-[11.5px] font-semibold uppercase tracking-wide text-ink-500",
+        "size": "11.5px",
+        "weight": 600,
+        "lineHeight": "1.3",
+        "tracking": "0.04em",
+        "usage": "Table column headers, DetailList terms"
+      },
+      {
+        "name": "Nav group",
+        "className": "text-[10.5px] font-semibold uppercase tracking-[0.08em] text-ink-400",
+        "size": "10.5px",
+        "weight": 600,
+        "lineHeight": "1.3",
+        "tracking": "0.08em",
+        "usage": "Sidebar group heading"
+      },
+      {
+        "name": "Micro",
+        "className": "text-[11px] text-ink-400",
+        "size": "11px",
+        "weight": 400,
+        "lineHeight": "1.4",
+        "usage": "Units (AED, kWh, kW), footnotes"
+      }
+    ]
+  },
+  "spacing": {
+    "1": "4px",
+    "2": "8px",
+    "3": "12px",
+    "4": "16px",
+    "5": "20px",
+    "6": "24px",
+    "8": "32px",
+    "10": "40px",
+    "12": "48px",
+    "16": "64px",
+    "0.5": "2px",
+    "1.5": "6px",
+    "2.5": "10px",
+    "3.5": "14px"
+  },
+  "radius": {
+    "xs": "4px",
+    "sm": "6px",
+    "md": "8px",
+    "lg": "10px",
+    "xl": "14px",
+    "full": "9999px"
+  },
+  "shadow": {
+    "none": "none",
+    "panel": "0 1px 2px 0 rgb(25 30 46 / 0.04), 0 1px 3px 0 rgb(25 30 46 / 0.04)",
+    "raised": "0 2px 4px -1px rgb(25 30 46 / 0.06), 0 6px 16px -4px rgb(25 30 46 / 0.08)",
+    "overlay": "0 12px 32px -8px rgb(25 30 46 / 0.18), 0 4px 12px -4px rgb(25 30 46 / 0.08)",
+    "control": "0 1px 2px rgba(25, 30, 46, 0.08)"
+  },
+  "breakpoint": {
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  },
+  "size": {
+    "control": {
+      "xs": {
+        "height": "28px",
+        "paddingX": "8px",
+        "fontSize": "12px",
+        "radius": "6px"
+      },
+      "sm": {
+        "height": "32px",
+        "paddingX": "10px",
+        "fontSize": "13px",
+        "radius": "6px"
+      },
+      "md": {
+        "height": "36px",
+        "paddingX": "14px",
+        "fontSize": "13px",
+        "radius": "7px"
+      },
+      "lg": {
+        "height": "44px",
+        "paddingX": "20px",
+        "fontSize": "14px",
+        "radius": "8px"
+      }
+    },
+    "icon": {
+      "xs": "12px",
+      "sm": "14px",
+      "md": "16px",
+      "lg": "18px",
+      "xl": "20px"
+    },
+    "layout": {
+      "sidebarExpanded": "236px",
+      "sidebarCollapsed": "62px",
+      "topbarHeight": "56px",
+      "drawerSm": "420px",
+      "drawerMd": "560px",
+      "drawerLg": "720px",
+      "drawerXl": "920px",
+      "modalSm": "448px",
+      "modalMd": "512px",
+      "modalLg": "672px",
+      "modalXl": "896px",
+      "modalFull": "1152px"
+    }
+  },
+  "motion": {
+    "instant": "100ms",
+    "fast": "150ms",
+    "base": "180ms",
+    "drawer": "240ms",
+    "easing": "cubic-bezier(0.16, 1, 0.3, 1)"
+  }
+}
