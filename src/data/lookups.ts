@@ -34,7 +34,12 @@ export type LookupKey =
   | 'services'
   | 'employeeBands'
   | 'genders'
-  | 'documentTypes';
+  | 'documentTypes'
+  /* ---- Network / EV charging infrastructure ---------------------------- */
+  | 'amenities'
+  | 'manufacturers'
+  | 'locationTypes'
+  | 'ocppConfigGroups';
 
 /** Lookups whose options are filtered by a parent selection. */
 export const DEPENDENT_LOOKUPS: Partial<Record<LookupKey, LookupKey>> = {
@@ -306,6 +311,65 @@ const documentTypes: LookupOption[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
+/* Network — site amenities, hardware vendors, site classification            */
+/* -------------------------------------------------------------------------- */
+
+const amenities: LookupOption[] = [
+  { id: 'restroom', name: 'Restrooms', nameAr: 'دورات المياه' },
+  { id: 'cafe', name: 'Café', nameAr: 'مقهى' },
+  { id: 'restaurant', name: 'Restaurant', nameAr: 'مطعم' },
+  { id: 'retail', name: 'Retail', nameAr: 'متاجر' },
+  { id: 'supermarket', name: 'Supermarket', nameAr: 'سوبر ماركت' },
+  { id: 'wifi', name: 'Wi-Fi', nameAr: 'واي فاي' },
+  { id: 'lounge', name: 'Waiting lounge', nameAr: 'صالة انتظار' },
+  { id: 'covered', name: 'Covered parking', nameAr: 'مواقف مظللة' },
+  { id: 'lighting', name: 'Lighting', nameAr: 'إنارة' },
+  { id: 'cctv', name: 'CCTV', nameAr: 'كاميرات مراقبة' },
+  { id: 'security', name: '24/7 security', nameAr: 'أمن على مدار الساعة' },
+  { id: 'accessible', name: 'Accessible bay', nameAr: 'موقف لذوي الهمم' },
+  { id: 'valet', name: 'Valet', nameAr: 'خدمة صف السيارات' },
+  { id: 'carwash', name: 'Car wash', nameAr: 'غسيل سيارات' },
+  { id: 'prayer', name: 'Prayer room', nameAr: 'مصلى' },
+  { id: 'atm', name: 'ATM', nameAr: 'صراف آلي' },
+];
+
+const manufacturers: LookupOption[] = [
+  { id: 'abb', name: 'ABB', nameAr: 'إيه بي بي', meta: { country: 'CH' } },
+  { id: 'alpitronic', name: 'Alpitronic', nameAr: 'ألبيترونيك', meta: { country: 'IT' } },
+  { id: 'kempower', name: 'Kempower', nameAr: 'كيمباور', meta: { country: 'FI' } },
+  { id: 'delta', name: 'Delta Electronics', nameAr: 'دلتا إلكترونيكس', meta: { country: 'TW' } },
+  { id: 'siemens', name: 'Siemens', nameAr: 'سيمنس', meta: { country: 'DE' } },
+  { id: 'autel', name: 'Autel Energy', nameAr: 'أوتيل إنرجي', meta: { country: 'CN' } },
+  { id: 'wallbox', name: 'Wallbox', nameAr: 'وول بوكس', meta: { country: 'ES' } },
+  { id: 'schneider', name: 'Schneider Electric', nameAr: 'شنايدر إلكتريك', meta: { country: 'FR' } },
+  { id: 'tritium', name: 'Tritium', nameAr: 'تريتيوم', meta: { country: 'AU' } },
+  { id: 'star-charge', name: 'Star Charge', nameAr: 'ستار تشارج', meta: { country: 'CN' } },
+];
+
+const locationTypes: LookupOption[] = [
+  { id: 'Public', name: 'Public', nameAr: 'عام' },
+  { id: 'Retail', name: 'Retail', nameAr: 'تجزئة' },
+  { id: 'Workplace', name: 'Workplace', nameAr: 'مكان عمل' },
+  { id: 'Residential', name: 'Residential', nameAr: 'سكني' },
+  { id: 'Fleet', name: 'Fleet depot', nameAr: 'مستودع أسطول' },
+  { id: 'Hotel', name: 'Hotel', nameAr: 'فندق' },
+  { id: 'Highway', name: 'Highway', nameAr: 'طريق سريع' },
+  { id: 'Parking', name: 'Parking operator', nameAr: 'مشغل مواقف' },
+];
+
+/** Groups the OCPP configuration keys so the list is navigable. */
+const ocppConfigGroups: LookupOption[] = [
+  { id: 'core', name: 'Core', nameAr: 'أساسي' },
+  { id: 'connectivity', name: 'Connectivity', nameAr: 'الاتصال' },
+  { id: 'metering', name: 'Metering', nameAr: 'القياس' },
+  { id: 'authorization', name: 'Authorisation', nameAr: 'التفويض' },
+  { id: 'smart-charging', name: 'Smart charging', nameAr: 'الشحن الذكي' },
+  { id: 'security', name: 'Security', nameAr: 'الأمان' },
+  { id: 'local-auth', name: 'Local auth list', nameAr: 'قائمة التفويض المحلية' },
+  { id: 'reservation', name: 'Reservation', nameAr: 'الحجز' },
+];
+
+/* -------------------------------------------------------------------------- */
 /* Registry + accessors                                                        */
 /* -------------------------------------------------------------------------- */
 
@@ -320,6 +384,10 @@ const REGISTRY: Record<LookupKey, LookupOption[]> = {
   employeeBands,
   genders,
   documentTypes,
+  amenities,
+  manufacturers,
+  locationTypes,
+  ocppConfigGroups,
 };
 
 /** Every active option of a lookup, in registry order. */

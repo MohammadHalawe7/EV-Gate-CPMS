@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, Eye, EyeOff, Lock, Mail } from 'lucide-react';
+import { ArrowRight, Check, Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { useI18n } from '@/i18n';
 import { cx } from '@/lib/utils';
 import { Button, IconButton } from '@/components/ui/Button';
 import { Checkbox, CONTROL_BASE, CONTROL_INTERACTIVE, Field } from '@/components/ui/Field';
 import { Alert } from '@/components/ui/Alert';
+import { Avatar } from '@/components/ui/Surface';
 import { AuthLayout } from '@/app/AuthLayout';
+import { APP_ROUTES } from '@/app/navigation';
+import { PERSONAS, useSession } from '@/app/session';
 
 export function LoginPage() {
-  const { t } = useI18n();
+  const { t, ln } = useI18n();
   const navigate = useNavigate();
+  const { signIn } = useSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [reveal, setReveal] = useState(false);
@@ -18,6 +22,12 @@ export function LoginPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * There is no authentication service yet — credentials belong to User & Role
+   * Management. Any well-formed pair signs in as the Platform Administrator;
+   * the persona row below is the quicker route and the one that demonstrates
+   * how the permission model changes what the product shows.
+   */
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !password) {
@@ -28,8 +38,14 @@ export function LoginPage() {
     setBusy(true);
     window.setTimeout(() => {
       setBusy(false);
-      setError(t('login.err.notWired'));
+      signIn(PERSONAS[0].id);
+      navigate(APP_ROUTES.dashboard);
     }, 700);
+  };
+
+  const enterAs = (personaId: string) => {
+    signIn(personaId);
+    navigate(APP_ROUTES.dashboard);
   };
 
   return (
@@ -124,6 +140,47 @@ export function LoginPage() {
         >
           {t('app.signIn')}
         </Button>
+
+        {/* ---- Demo personas ------------------------------------------------
+            The prototype has no identity provider. Rather than hide that, the
+            screen offers the four administration levels directly: one click
+            signs in and the whole product re-scopes around that role. */}
+        <div className="pt-1">
+          <div className="mb-2 flex items-center gap-2.5">
+            <span className="h-px flex-1 bg-ink-200" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.07em] text-ink-400">
+              {t('login.personaTitle')}
+            </span>
+            <span className="h-px flex-1 bg-ink-200" />
+          </div>
+          <p className="mb-2.5 text-center text-[11.5px] leading-relaxed text-ink-400">
+            {t('login.personaHint')}
+          </p>
+          <ul className="space-y-1.5">
+            {PERSONAS.map((persona) => (
+              <li key={persona.id}>
+                <button
+                  type="button"
+                  onClick={() => enterAs(persona.id)}
+                  className="group flex w-full items-center gap-3 rounded-[9px] border border-ink-200 bg-white px-3 py-2.5 text-start transition-all hover:border-brand-300 hover:bg-brand-50/40"
+                >
+                  <Avatar name={persona.name} color={persona.avatarColor} size="sm" />
+                  <span className="min-w-0 flex-1">
+                    <span dir="auto" className="block truncate text-[12.5px] font-medium text-ink-900">
+                      {ln({ name: persona.name, nameAr: persona.nameAr })}
+                    </span>
+                    <span className="block truncate text-[11px] text-ink-500">
+                      {t(`persona.${persona.roleKey}` as never)}
+                    </span>
+                  </span>
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-ink-200 text-ink-300 transition-colors group-hover:border-brand-400 group-hover:bg-brand-800 group-hover:text-white">
+                    <Check className="h-3 w-3" />
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <button
           type="button"
